@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:login_ui/sign_up.dart';
 import 'package:login_ui/verify_otp.dart';
-import 'widget/FormCard.dart';
 
 void main() => runApp(MaterialApp(
-  home :verify_otp()
+  home :MyApp()
 ));
 
 class MyApp extends StatefulWidget {
@@ -71,8 +71,10 @@ class _MyAppState extends State<MyApp> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: Image.asset('image/image_01.png'),
+                  padding: const EdgeInsets.only(top: 25),
+                  child: Image.asset('image/selection.png' ,
+                    width: 280,
+                    height: 210,),
                 ),
                Expanded(
                    child: Container()),
@@ -86,25 +88,25 @@ class _MyAppState extends State<MyApp> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Image.asset('image/Sydney.png',
-                            width : ScreenUtil.getInstance().setWidth(100),
-                            height : ScreenUtil.getInstance().setHeight(100)),
+//                        Image.asset('image/logo.png',
+//                            width : ScreenUtil.getInstance().setWidth(100),
+//                            height : ScreenUtil.getInstance().setHeight(100)),
 
                       Padding(
-                        padding: const EdgeInsets.only(left: 9),
-                        child: Text('Name',
+                        padding: const EdgeInsets.only(left: 20,top: 20),
+                        child: Text('LOGIN ',
                           style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 25,
                             fontWeight: FontWeight.bold,
-                            letterSpacing: 2
+                            letterSpacing: 1
                         ),
                         ),
                       ),
                       ],
                     ),
-                    SizedBox(height: ScreenUtil.getInstance().setHeight(180)),
+                    SizedBox(height: ScreenUtil.getInstance().setHeight(220)),
                   Container(width: double.infinity,
-                    height: ScreenUtil.getInstance().setHeight(550),
+                    height: ScreenUtil.getInstance().setHeight(500),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
@@ -122,21 +124,13 @@ class _MyAppState extends State<MyApp> {
                         ]),
                     child: Column(
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Text('Login With', style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: .6
-                          ),),
-                        ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 50),
                         Form(
                           key: formKey,
                           child: Column(
                             children: <Widget>[
                               Padding(
-                                padding: const EdgeInsets.only(left: 25, right: 25, bottom: 6),
+                                padding: const EdgeInsets.only(left: 25, right: 25),
                                 child: TextFormField(
                                   controller: emailValidation,
                                   decoration: InputDecoration(
@@ -152,7 +146,7 @@ class _MyAppState extends State<MyApp> {
                                Text('OR'),
                                 SizedBox(height: 10),
                                 Padding(
-                                 padding: const EdgeInsets.only(left: 25, right: 25),
+                                 padding: const EdgeInsets.only(left: 25, right: 25 ),
                                   child: TextFormField(
                                   obscureText: true,
                                    decoration: InputDecoration(
