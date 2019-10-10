@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:pin_code_text_field/pin_code_text_field.dart';
+
 
 class verify_otp extends StatefulWidget {
   @override
@@ -10,9 +11,9 @@ class verify_otp extends StatefulWidget {
 
 class _verify_otpState extends State<verify_otp> {
 
-  final changeNotifier = StreamController<Functions>();
+  TextEditingController controller = TextEditingController();
   bool hasError = false;
-  String submittedString = "";
+  String thisText = "";
 
 
   @override
@@ -23,60 +24,76 @@ class _verify_otpState extends State<verify_otp> {
       ),
       body: SafeArea(
         child: Container(
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              children: <Widget>[
-                SizedBox(height: 40),
-                Text('Enter OTP' , style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),),
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10,left: 50,right: 50),
-                  child: PinCodeTextField(
-                    length: 4, // must be greater than 0
-                    obsecureText: false, //optional, default is false
-                    shape: PinCodeFieldShape.round,
-                    onDone: (String value) {
-                      setState(() {
-                        submittedString = value;
-                      });
-                    },
-                  ),
-                ),
-                SizedBox(height: 30),
-                Text("Didn't Received OTP ?"),
-                SizedBox(height: 30),
-                Container(
-                  width: 250,
-                  child: FlatButton(
-                    onPressed: (){},
-                    child: Text(' VERIFY ' , style: TextStyle(
-                      color: Colors.white
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Center(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 60),
+                    Image.asset('image/otp.png' ,
+                    width: 450,
+                    height: 200,),
+                    SizedBox(height: 50),
+                    Text('Enter OTP' , style: TextStyle(
+                      fontSize: 18,
                     ),),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.lightBlue[500],
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.lightBlue[200],
-                          offset: Offset(1, -2),
-                        blurRadius: 5
+                    SizedBox(height: 20,),
+                    PinCodeTextField(
+                      maxLength: 4,
+                      hideCharacter: true,
+                      highlight: true,
+                      controller: controller,
+                      highlightColor: Colors.blue,
+                      defaultBorderColor: Colors.black,
+                      hasTextBorderColor: Colors.green,
+                      maskCharacter: controller.text,
+                      onTextChanged: (text) {
+                        setState(() {
+                          hasError = false;
+                        });
+                      },
+                      onDone: (text){
+                        print("DONE $text");
+                      },
+                    ),
+                    Text(thisText),
+//                  SizedBox(height: 10),
+//                  Text("Didn't Received OTP ?"),
+                    SizedBox(height: 20),
+                      Container(
+                        width: 250,
+                          child: FlatButton(
+                            onPressed: (){
+                              setState(() {
+                                this.thisText = controller.text;
+                              });
+                            },
+                            child: Text(' VERIFY ' , style: TextStyle(
+                                color: Colors.white
+                                ),),
+                                ),
+                                decoration: BoxDecoration(
+                                color: Colors.lightBlue[500],
+                                borderRadius: BorderRadius.circular(5),
+                                boxShadow: [
+                                BoxShadow(
+                                color: Colors.lightBlue[200],
+                                offset: Offset(1, -2),
+                                blurRadius: 5
+                                ),
+                                BoxShadow(
+                                color: Colors.lightBlue[200],
+                                offset: Offset(-1, 2),
+                                blurRadius: 5
+                                )
+                                ]
+                                ),
                       ),
-                      BoxShadow(
-                          color: Colors.lightBlue[200],
-                          offset: Offset(-1, 2),
-                          blurRadius: 5
-                      )
-                    ]
 
-                  ),
+                  ],
                 ),
-
-            ],
+              ),
             ),
           ),
         ),
