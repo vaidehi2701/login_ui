@@ -1,6 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:login_ui/home_page.dart';
+import 'package:login_ui/project_details.dart';
 import 'package:login_ui/sign_up.dart';
+import 'package:login_ui/splash-1.dart';
+import 'package:login_ui/trial.dart';
 import 'package:login_ui/verify_otp.dart';
 
 void main() => runApp(MaterialApp(
@@ -8,6 +14,7 @@ void main() => runApp(MaterialApp(
     initialRoute: '/',
     routes: {
       '/' :(context) => MyApp(),
+      '/Detail' :(context) => ProjectDetails(),
       '/Otp' :(context) => verify_otp(),
       '/SignUp' :(context) => sign_up(),
     },
@@ -108,7 +115,7 @@ class _MyAppState extends State<MyApp> {
                       ),
                       ],
                     ),
-                    SizedBox(height: ScreenUtil.getInstance().setHeight(220)),
+                    SizedBox(height: ScreenUtil.getInstance().setHeight(210)),
                   Container(width: double.infinity,
                     height: ScreenUtil.getInstance().setHeight(500),
                     decoration: BoxDecoration(
@@ -215,7 +222,12 @@ class _MyAppState extends State<MyApp> {
                       //navigateToSignup();
                         Navigator.pushNamed(context, '/SignUp');
                        },
-                      child:  Text("Don't Have An Account ? "),
+                      child:  Padding(
+                        padding: const EdgeInsets.only(left: 15),
+                        child: Text("Don't Have An Account ? " , style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                        ),),
+                      ),
                     ),
                     Image.asset('image/image_02.png')
                   ],

@@ -67,6 +67,7 @@ class _verify_otpState extends State<verify_otp> {
                             onPressed: (){
                               setState(() {
                                 this.thisText = controller.text;
+                                Navigator.pushNamed(context, '/Detail');
                               });
                             },
                             child: Text(' VERIFY ' , style: TextStyle(
@@ -99,5 +100,66 @@ class _verify_otpState extends State<verify_otp> {
         ),
       ),
     );
+//
+//    ListView.builder(
+//      itemBuilder: (context, position) {
+//        return Column(
+//          children: <Widget>[
+//            Row(
+//              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//              children: <Widget>[
+//                Column(
+//                  crossAxisAlignment: CrossAxisAlignment.start,
+//                  children: <Widget>[
+//                    Padding(
+//                      padding:
+//                      const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6.0),
+//                      child: Text(
+//                        sendersList[position],
+//                        style: TextStyle(
+//                            fontSize: 22.0, fontWeight: FontWeight.bold),
+//                      ),
+//                    ),
+//                    Padding(
+//                      padding:
+//                      const EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0),
+//                      child: Text(
+//                        subjectList[position],
+//                        style: TextStyle(fontSize: 18.0),
+//                      ),
+//                    ),
+//                  ],
+//                ),
+//                Padding(
+//                  padding: const EdgeInsets.all(8.0),
+//                  child: Column(
+//                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                    children: <Widget>[
+//                      Text(
+//                        "5m",
+//                        style: TextStyle(color: Colors.grey),
+//                      ),
+//                      Padding(
+//                        padding: const EdgeInsets.all(8.0),
+//                        child: Icon(
+//                          Icons.star_border,
+//                          size: 35.0,
+//                          color: Colors.grey,
+//                        ),
+//                      ),
+//                    ],
+//                  ),
+//                ),
+//              ],
+//            ),
+//            Divider(
+//              height: 2.0,
+//              color: Colors.grey,
+//            )
+//          ],
+//        );
+//      },
+//      itemCount: sendersList.length,
+//    ),
   }
 }

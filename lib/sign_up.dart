@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 
 class sign_up extends StatefulWidget {
   @override
@@ -7,6 +7,53 @@ class sign_up extends StatefulWidget {
 }
 
 class _sign_upState extends State<sign_up> {
+
+  final emailValidation = new TextEditingController();
+  final mobileValidation = new TextEditingController();
+  final nameValidation = new TextEditingController();
+  final bdayValidation = new TextEditingController();
+
+
+
+  DateTime date= DateTime.now();
+  TimeOfDay time= TimeOfDay.now();
+
+
+
+
+  Future _selectDate() async {
+    DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: new DateTime.now(),
+        firstDate: new DateTime(2016),
+        lastDate: new DateTime(2020)
+    );
+    if(picked != null) setState(() => bday = picked.toString());
+  }
+  String email;
+  String mobile;
+  String name;
+  String bday;
+
+  String validateEmail(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    if (!regex.hasMatch(value))
+      return 'Enter Valid Email';
+    else
+      return null;
+  }
+
+  String validateMobile(String value) {
+    if (value.length != 10)
+      return 'Mobile Number must be of 10 digit';
+    else
+      return null;
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -54,10 +101,10 @@ class _sign_upState extends State<sign_up> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 70),
+                      SizedBox(height: 85),
                       Container(
                           width: double.infinity,
-                          height: 320,
+                          height: 270,
                         decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
@@ -81,36 +128,40 @@ class _sign_upState extends State<sign_up> {
                                 child: Column(
                                   children: <Widget>[
                                     TextFormField(
+                                      controller: nameValidation,
                                       decoration: InputDecoration(
                                           border: OutlineInputBorder(),
                                           hintText: 'Enter Your Name',
                                           labelText: 'Name'
                                       ),
+                                 // validator : validateEmail,
+                                  onSaved: (val) => name=val,
                                     ),
                                     SizedBox(height: 10),
                                     TextFormField(
+                                      controller: mobileValidation,
                                       decoration: InputDecoration(
                                           border: OutlineInputBorder(),
                                           hintText: 'Enter Your Mobile Number',
                                           labelText: 'Mobile No'
                                       ),
+                                      validator : validateMobile,
+                                      onSaved: (val) => mobile=val,
                                     ),
                                     SizedBox(height: 10),
                                     TextFormField(
+                                      controller: emailValidation,
                                       decoration: InputDecoration(
                                           border: OutlineInputBorder(),
                                           hintText: 'Enter Your Email',
                                           labelText: 'Email'
                                       ),
+                                      validator : validateMobile,
+                                      onSaved: (val) => email=val,
                                     ),
                                     SizedBox(height: 10),
-                                    TextFormField(
-                                      decoration: InputDecoration(
-                                          border: OutlineInputBorder(),
-                                          hintText: 'Enter Your Birthdate',
-                                          labelText: 'Birthdate'
-                                      ),
-                                    ),
+
+
 
                                   ],
                                 ),
@@ -128,7 +179,9 @@ class _sign_upState extends State<sign_up> {
                             padding: const EdgeInsets.only(top: 10),
                             child: Container(
                               child: RaisedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/Detail');
+                                },
                                 padding: const EdgeInsets.all(0.0),
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                                 //color: Colors.cyan[100],
@@ -178,6 +231,7 @@ class _sign_upState extends State<sign_up> {
     );
   }
 }
+
 
 
 
