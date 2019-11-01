@@ -128,6 +128,7 @@ class _sign_upState extends State<sign_up> {
                                 child: Column(
                                   children: <Widget>[
                                     TextFormField(
+                                      textInputAction: TextInputAction.next,
                                       controller: nameValidation,
                                       decoration: InputDecoration(
                                           border: OutlineInputBorder(),
@@ -139,6 +140,7 @@ class _sign_upState extends State<sign_up> {
                                     ),
                                     SizedBox(height: 10),
                                     TextFormField(
+                                      textInputAction: TextInputAction.next,
                                       controller: mobileValidation,
                                       decoration: InputDecoration(
                                           border: OutlineInputBorder(),
@@ -150,6 +152,7 @@ class _sign_upState extends State<sign_up> {
                                     ),
                                     SizedBox(height: 10),
                                     TextFormField(
+                                      textInputAction: TextInputAction.done,
                                       controller: emailValidation,
                                       decoration: InputDecoration(
                                           border: OutlineInputBorder(),

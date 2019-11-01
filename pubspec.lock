@@ -43,11 +43,25 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.6"
+  fancy_bottom_navigation:
+    dependency: "direct main"
+    description:
+      name: fancy_bottom_navigation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.2"
   flutter:
     dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_chips_input:
+    dependency: "direct main"
+    description:
+      name: flutter_chips_input
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.5.1"
   flutter_cupertino_date_picker:
     dependency: "direct main"
     description:
@@ -74,6 +88,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.15.8"
+  line_awesome_icons:
+    dependency: "direct main"
+    description:
+      name: line_awesome_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4+2"
   matcher:
     dependency: transitive
     description:

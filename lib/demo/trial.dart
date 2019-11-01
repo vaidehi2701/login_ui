@@ -30,7 +30,6 @@ class _trialState extends State<trial> {
         endDate = picked[1];
       });
 
-
   }
 }
   @override
